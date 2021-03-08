@@ -1,6 +1,6 @@
 from tkinter.simpledialog import Dialog, askstring
-from tkinter import *
-from scoreFileIO import *
+from tkinter import Tk, Frame, Label, constants
+from scoreFileIO import ScoreFileIO
 
 class TopScoresDlg(Dialog):
 
@@ -37,7 +37,7 @@ class TopScoresDlg(Dialog):
         col2_lbl.grid(row=1, column=2)
         col3_lbl = Label(self._frame, text="date", width=10, font=("arial", 12, "normal"))
         col3_lbl.grid(row=1, column=3)
-        self._frame.pack(side=TOP)
+        self._frame.pack(side=constants.TOP)
 
         # if latest score is a leader then ask for a name else just display
         # top scores
@@ -72,22 +72,22 @@ class TopScoresDlg(Dialog):
             # in each label use .configure() for additional items
             number_place_lbl = Label(self._frame, text=str(idx + 1) + ")", bg=row_color)
             number_place_lbl.configure(width=4, font=("arial", 12, "normal"))
-            number_place_lbl.grid(row=row_index, column=0, sticky=E+W)
+            number_place_lbl.grid(row=row_index, column=0, sticky=constants.E+constants.W)
 
             latest_score_lbl = Label(self._frame, text=str(score_list[idx][ScoreFileIO.SCORE_KEY]), bg=row_color)
             latest_score_lbl.configure(width=6, font=("arial", 12, "normal"))
-            latest_score_lbl.grid(row=row_index, column=1, sticky=E+W)
+            latest_score_lbl.grid(row=row_index, column=1, sticky=constants.E+constants.W)
 
             first_name_lbl = Label(self._frame, text=score_list[idx][ScoreFileIO.NAME_KEY], bg=row_color )
             first_name_lbl.configure(width=16, font=("arial", 12, "normal"))
-            first_name_lbl.grid(row=row_index, column=2, pady=5, sticky=E+W)
+            first_name_lbl.grid(row=row_index, column=2, pady=5, sticky=constants.E+constants.W)
 
             date_lbl = Label(self._frame, text=score_list[idx][ScoreFileIO.DATE_KEY], bg=row_color)
             date_lbl.configure(width=10, font=("arial", 12, "normal"))
-            date_lbl.grid(row=row_index, column=3, sticky=E+W)
+            date_lbl.grid(row=row_index, column=3, sticky=constants.E+constants.W)
 
         else:
-            self._frame.pack(side=TOP)
+            self._frame.pack(side=constants.TOP)
 
     # end show_score
 
@@ -126,4 +126,3 @@ if __name__ == "__main__":
     s = TopScoresDlg(root, latest_score)
     # print(s['highScore'])
     root.mainloop()
-    

@@ -1,10 +1,9 @@
 import re
-from tkinter import *
-from statusframe import *
-from fieldframe import *
-from buttontile import *
-from topscores import *
-from scoreFileIO import *
+from tkinter import Tk
+from statusframe import StatusFrame
+from fieldframe import FieldFrame
+from buttontile import ButtonTile
+from topscores import TopScoresDlg
 
 
 class MineGame:

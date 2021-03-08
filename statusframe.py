@@ -1,4 +1,5 @@
-from tkinter import *
+from tkinter import Tk, Frame, Label, Button, PhotoImage
+from tkinter import constants
 
 class StatusFrame(Frame):
 
@@ -8,7 +9,7 @@ class StatusFrame(Frame):
     WIN_FACE: int = 2
 
     def __init__(self, top, mcount: int=0, tim: int =0, face_num: int =0):
-        Frame.__init__(self, top, bd=1, relief=FLAT)
+        Frame.__init__(self, top, bd=1, relief=constants.FLAT)
         self._mine_count = mcount
         self._game_time = tim
         self._face_number = face_num

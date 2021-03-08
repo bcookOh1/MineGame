@@ -1,4 +1,4 @@
-from tkinter import *
+from tkinter import Button, PhotoImage, constants
 
 class ButtonTile(Button):
 
@@ -22,7 +22,7 @@ class ButtonTile(Button):
     def initialize_tile(self):
         self._cover = 0
         self._value = 0
-        self.config(state=NORMAL, relief=RAISED, justify=CENTER)
+        self.config(state=constants.NORMAL, relief=constants.RAISED, justify=constants.CENTER)
         self.config(bd=0, image=self._blank_image)
     # end initialize_tile
 
@@ -85,6 +85,6 @@ class ButtonTile(Button):
            elif self._value == 9:
                self.uncovered_image = PhotoImage(file='./gifs/bomb.gif')
 
-           self.config(state=DISABLED, relief=FLAT, image=self.uncovered_image)
+           self.config(state=constants.DISABLED, relief=constants.FLAT, image=self.uncovered_image)
 
     # end uncover

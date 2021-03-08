@@ -1,24 +1,24 @@
 import json
-import datetime 
+import datetime
 from typing import Dict, List
 
 class ScoreFileIO:
 
     # class constants, don't use annotations in constants, it
-    # doesn't work in all cases so don't try 
+    # doesn't work in all cases so don't try
 
-    # top level key in the json file 
-    _THE_SCORE_KEY = "the_scores" 
-    
-    # key strings in individual score dict 
+    # top level key in the json file
+    _THE_SCORE_KEY = "the_scores"
+
+    # key strings in individual score dict
     SCORE_KEY = 'score'
     NAME_KEY = 'name'
-    DATE_KEY = 'date' 
-    
+    DATE_KEY = 'date'
+
     # a single default score dictionary
     _SCORE_DEFAULT = {SCORE_KEY: 9999, NAME_KEY: 'None', DATE_KEY: '03-01-2021'}
 
-    # the max number of scores to display and save in the file 
+    # the max number of scores to display and save in the file
     # note: public constant
     MAX_SCORES = 4
 
@@ -35,14 +35,14 @@ class ScoreFileIO:
 
         # make a list of default score dictionary values
         scores: List[Dict[str: int, str: str, str: str]] = []
-        for idx in range(self.MAX_SCORES):
+        for _ in range(self.MAX_SCORES):
             scores.append(self._SCORE_DEFAULT)
 
         return scores
     # end make_default_score_list
 
 
-    # read the scored from the file   
+    # read the scored from the file
     def read_in_scores(self) -> None:
 
         try:
@@ -56,9 +56,9 @@ class ScoreFileIO:
 
         else:
 
-            try: 
-                # score_list is an in-memory representation of json file list 
-                # of dictionaries 
+            try:
+                # score_list is an in-memory representation of json file list
+                # of dictionaries
                 self._score_list = json.load(fp)[self._THE_SCORE_KEY]
 
             except ValueError:
@@ -67,7 +67,7 @@ class ScoreFileIO:
                 self._score_list = self.make_default_score_list()
 
             else:
-                fp.close() 
+                fp.close()
 
     # end read_in_scores
 
@@ -78,7 +78,7 @@ class ScoreFileIO:
     # end get_score_list
 
 
-    # add a new score dict to the 
+    # add a new score dict to the
     def add_new_score(self, score: int, name: str) -> int:
         ret: int = -1
 
@@ -110,7 +110,7 @@ class ScoreFileIO:
         # make a new high score dictionary
         score_dict = {self._THE_SCORE_KEY: self._score_list}
 
-        # save over the original json file  
+        # save over the original json file
         fp = open(self._fname, 'w')
         json.dump(score_dict, fp, indent=3)
         fp.close()
@@ -118,10 +118,10 @@ class ScoreFileIO:
     # end save_scores
 
     # test if score belongs in the top scores
-    def is_leader(self, score: int) -> bool: 
+    def is_leader(self, score: int) -> bool:
         ret: bool = False
 
-        # get the max score (longest time) value 
+        # get the max score (longest time) value
         max_score: int = max(self._score_list, key=lambda k: k[self.SCORE_KEY])[self.SCORE_KEY]
         if score <= max_score:
             ret = True

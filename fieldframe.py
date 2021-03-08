@@ -1,7 +1,7 @@
 
-from tkinter import *
-from buttontile import *
-from random import *
+from tkinter import Frame, constants
+from buttontile import ButtonTile
+from random import  randint
 from typing import List
 
 class FieldFrame(Frame):
@@ -13,7 +13,7 @@ class FieldFrame(Frame):
 
     def __init__(self, top, size: int=6):
 
-        Frame.__init__(self,top, bd=5, relief=RIDGE)
+        Frame.__init__(self,top, bd=5, relief=constants.RIDGE)
         self._size = size
         self._valid_flagged = 0
         self._number_of_mines = int((size**2) * (FieldFrame._PERCENT_MINES / 100 ))
