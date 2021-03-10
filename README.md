@@ -1,5 +1,7 @@
 **Mine Finder Game**
 
+![](doc/the_game.png)
+
 This game repoduces one that came with older versions of Microsoft Windows. The game is not completely fathful to the original, but is very playable. It's written in python and uses tkinter for the GUI. I wrote this as a way to learn some python and tkinker programming and apply best practices.
 
 **Game terms:**
@@ -25,5 +27,12 @@ This game repoduces one that came with older versions of Microsoft Windows. The 
 1. at the end of a game the program shows you the top scores dialog,
    1. if your time is among the top (low) scores the program asks for a name and adds it to the top scores.
 
-**Code Description**
+**Code Description:**
+
+Using right and left mouse clicks changes the state of a tile as follows.
+
+![](doc/tile_dot.png)
+
+
+
 

@@ -1,0 +1,18 @@
+digraph "Tile cover and value" {
+	label= <<font point-size='28'>Tile cover and value states</font>>;
+    labelloc=top;
+    labeljust=left;
+   rankdir=LR;
+	size="10,10"
+   { node [shape=point style=invis] start }
+   { node [shape=circle] "blank\ncover" "flag\ncover" "question\ncover" uncovered}
+   { node [shape=doublecircle] blank number mine }
+	start -> "blank\ncover";
+	"blank\ncover" -> "flag\ncover" [fontname=Courier fontsize=16 label="right click"];
+	"flag\ncover" -> "question\ncover" [fontname=Courier fontsize=16 label="right click"];
+	"question\ncover" -> "blank\ncover" [fontname=Courier fontsize=16 label="right click"];
+	"blank\ncover" -> uncovered [fontname=Courier fontsize=16 label="left click"];
+	uncovered -> blank [fontname=Courier fontsize=16 label="value = 0"];
+	uncovered -> number [fontname=Courier fontsize=16 label="value = 1..8"];
+	uncovered -> mine [fontname=Courier fontsize=16 label="value = 9"];
+}
