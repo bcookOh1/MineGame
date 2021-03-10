@@ -9,7 +9,7 @@
          "name": "debug_game.py",
          "type": "python",
          "request": "launch",
-         "program": "game.py",
+         "program": "minegame.py",
          "console": "integratedTerminal"
       },
       {
