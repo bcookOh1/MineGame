@@ -6,13 +6,13 @@ from buttontile import ButtonTile
 from topscores import TopScoresDlg
 
 
-class MineGame:
+class MineFinder:
 
     MAX_TIME: int = 6000
     LENGTH_OF_SIDE: int = 14
 
     def __init__(self):
-        self._size: int = MineGame.LENGTH_OF_SIDE
+        self._size: int = MineFinder.LENGTH_OF_SIDE
         self._root = Tk()
         self._game_active: bool = False
         self._game_time: int = 0
@@ -180,7 +180,7 @@ class MineGame:
             self._status_frame.set_game_timer(self._game_time)
 
             # if timeout of 10min then game lost
-            if self._game_time >= MineGame.MAX_TIME:
+            if self._game_time >= MineFinder.MAX_TIME:
                 self._game_active = False
                 self._game_over = True
                 self._status_frame.set_button_face(StatusFrame.UH_HO_FACE)
@@ -200,13 +200,13 @@ class MineGame:
 
         # use conditional to pass self._game_time
         # else MineGame.MAX_TIME as non-win
-        time: int = self._game_time if test_for_win else MineGame.MAX_TIME
+        time: int = self._game_time if test_for_win else MineFinder.MAX_TIME
         TopScoresDlg(self._root, time)
 
     # end show_top_score_dialog
 
 
 if __name__ == "__main__":
-    m = MineGame()
+    m = MineFinder()
     m.layout_mines()
     m.display_gui()

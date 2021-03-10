@@ -33,28 +33,28 @@ class FieldFrame(Frame):
     # end undiscoverd_mines
 
 
-    def set_field_grid(self):
+    def set_field_grid(self) -> None:
         for row in range(self._size):
             for col in range(self._size):
                 self._field_grid[make_name(row, col)] = ButtonTile(self, row, col)
     # end set_field_grid
 
 
-    def field_grid_to_gui(self):
+    def field_grid_to_gui(self) -> None:
         for row in range(self._size):
             for col in range(self._size):
                 self._field_grid[make_name(row, col)].place_in_gui()
     # end field_grid_to_gui
 
 
-    def init_field_grid(self):
+    def init_field_grid(self) -> None:
         for row in range(self._size):
             for col in range(self._size):
                 self._field_grid[make_name(row, col)].initialize_tile()
     # end init_field_grid
 
 
-    def place_mines(self):
+    def place_mines(self) -> None:
 
         mine_list = []
         count: int = 0
@@ -77,7 +77,7 @@ class FieldFrame(Frame):
     # end place_mines
 
 
-    def set_adjacent(self):
+    def set_adjacent(self) -> None:
         for row in range(self._size):
             for col in range(self._size):
                 tile = self.get_tile(row, col)
@@ -132,7 +132,7 @@ class FieldFrame(Frame):
 
     # end show_clear_tiles
 
-    def print_contents(self):
+    def print_contents(self) -> None:
         print("[v: 0..9, c: -1..2]")
         for row in range(self._size):
             for col in range(self._size):

@@ -19,32 +19,32 @@ class ButtonTile(Button):
         self.initialize_tile()
     # end __init__
 
-    def initialize_tile(self):
+    def initialize_tile(self) -> None:
         self._cover = 0
         self._value = 0
         self.config(state=constants.NORMAL, relief=constants.RAISED, justify=constants.CENTER)
         self.config(bd=0, image=self._blank_image)
     # end initialize_tile
 
-    def place_in_gui(self):
+    def place_in_gui(self) -> None:
         self.grid(row=self._row, column=self._col)
     # end place_in_gui
 
-    def set_row_col(self, row=0, col=0):
+    def set_row_col(self, row=0, col=0) -> None:
         self._row = row
         self._col = col
     # end place_in_gui
 
-    def set_value(self, val: int=0): self._value = val
+    def set_value(self, val: int=0) -> None: self._value = val
     def get_value(self) -> int: return self._value
     def get_row_col(self) -> tuple[int, int]: return self._row, self._col
     def get_cover(self) -> int: return self._cover
 
-    def print_contents(self):
+    def print_contents(self) -> None:
         print("[%d,%d]" % (self._value, self._cover), end='')
     # end print_contents
 
-    def set_cover(self):
+    def set_cover(self) -> None:
 
         if self._cover == ButtonTile.COVER_BLANK:
             self._cover = ButtonTile.COVER_FLAG
@@ -60,7 +60,7 @@ class ButtonTile(Button):
 
     # end set_cover
 
-    def uncover(self):
+    def uncover(self) -> None:
 
         if self._cover == 0:
            self._cover = -1
@@ -83,7 +83,7 @@ class ButtonTile(Button):
            elif self._value == 8:
                self.uncovered_image = PhotoImage(file='./gifs/eight.gif')
            elif self._value == 9:
-               self.uncovered_image = PhotoImage(file='./gifs/bomb.gif')
+               self.uncovered_image = PhotoImage(file='./gifs/mine.gif')
 
            self.config(state=constants.DISABLED, relief=constants.FLAT, image=self.uncovered_image)
 
