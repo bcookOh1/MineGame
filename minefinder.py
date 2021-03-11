@@ -8,11 +8,12 @@ from topscores import TopScores
 
 class MineFinder:
 
-    MAX_TIME: int = 6000
-    LENGTH_OF_SIDE: int = 15
+    _MAX_TIME: int = 6000
+    _LENGTH_OF_SIDE: int = 15
+    _PERCENT_MINES: float = 15.0
 
     def __init__(self):
-        self._size: int = MineFinder.LENGTH_OF_SIDE
+        self._size: int = MineFinder._LENGTH_OF_SIDE
         self._root = Tk()
         self._game_active: bool = False
         self._game_time: int = 0
@@ -20,7 +21,7 @@ class MineFinder:
         self._timer_id = None
         self._root.title('Mine Finder')
         self._status_frame = StatusFrame(self._root ,0 ,0 ,0)
-        self._field_frame = FieldFrame(self._root, self._size)
+        self._field_frame = FieldFrame(self._root, self._size, MineFinder._PERCENT_MINES)
         self._timer_id = self._root.after(1000, self.game_timer)
     # end __init__
 

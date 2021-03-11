@@ -8,15 +8,14 @@ class FieldFrame(Frame):
 
     # coords for adjacent tiles
     _ADJ = [(-1,0),(-1,1),(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1)]
-    _PERCENT_MINES = 15.0
     MINE_VALUE = 9
 
-    def __init__(self, top, size: int=6):
+    def __init__(self, top, size: int=6, percent_mines: float = 15.0):
 
         Frame.__init__(self,top, bd=5, relief=constants.RIDGE)
         self._size = size
         self._valid_flagged = 0
-        self._number_of_mines = int((size**2) * (FieldFrame._PERCENT_MINES / 100 ))
+        self._number_of_mines = int((size**2) * (percent_mines / 100 ))
         self._field_grid = {}
         self.set_field_grid()
         self.field_grid_to_gui()

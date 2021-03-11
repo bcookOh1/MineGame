@@ -6,8 +6,9 @@ scale 800 width
 Class Tk
 
 class MineFinder {
-   +MAX_TIME
-   +LENGTH_OF_SIDE
+   #_MAX_TIME
+   #_LENGTH_OF_SIDE
+   #_PERCENT_MINES
    #_size
    #_game_active
    #_game_time
@@ -34,7 +35,6 @@ Class Frame
 class FieldFrame {
    +MINE_VALUE
    #_ADJ
-   #_PERCENT_MINES
    #_size
    #_valid_flagged
    #_number_of_mines
