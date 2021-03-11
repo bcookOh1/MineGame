@@ -5,5 +5,4 @@
    "plantuml.exportFormat": "png",
    "plantuml.exportOutDir": "docs",
    "plantuml.diagramsRoot": "docs"
-   ]
 }
