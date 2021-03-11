@@ -46,26 +46,18 @@ class ScoreFileIO:
     def read_in_scores(self) -> None:
 
         try:
-
             fp = open(self._fname, 'r')
-
         except IOError:
-
             # make a list of default score dictionary values
             self._score_list = self.make_default_score_list()
-
         else:
-
             try:
                 # score_list is an in-memory representation of json file list
                 # of dictionaries
                 self._score_list = json.load(fp)[self._THE_SCORE_KEY]
-
             except ValueError:
-
                 # make a list of default score dictionary values
                 self._score_list = self.make_default_score_list()
-
             else:
                 fp.close()
 

@@ -1,0 +1,143 @@
+@startuml class_diagram
+
+left to right direction
+scale 800 width
+
+Class Tk
+
+class MineFinder {
+   +MAX_TIME
+   +LENGTH_OF_SIDE
+   #_size
+   #_game_active
+   #_game_time
+   #_game_over
+   #_timer_id
+   #_status_frame
+   #_field_frame
+   #_timer_id
+   +display_gui()
+   +set_status_frame()
+   +set_field_frame()
+   +layout_mines()
+   +new_game_clicked()
+   +frame_left_mouse()
+   +frame_right_mouse()
+   +game_timer()
+   +show_top_score_dialog()
+}
+
+Tk <|-- MineFinder
+
+Class Frame
+
+class FieldFrame {
+   +MINE_VALUE
+   #_ADJ
+   #_PERCENT_MINES
+   #_size
+   #_valid_flagged
+   #_number_of_mines
+   #_field_grid
+   +get_number_of_mines()
+   +undiscoverd_mines()
+   +field_grid_to_gui()
+   +set_field_grid()
+   +init_field_grid()
+   +place_mines()
+   +set_adjacent()
+   +show_clear_tiles()
+   +print_contents()
+   +is_game_over()
+   +set_tile()
+   +get_tile()
+}
+
+
+class StatusFrame {
+   +HAPPY_FACE
+   +UH_HO_FACE
+   +WIN_FACE
+   #_mine_count
+   #_game_time
+   #_face_number
+   #_win_face
+   #_hap_face
+   #_uh_oh_face
+   #_mine_counter_lbl
+   #_new_button
+   #_game_timer_lbl
+   #_mine_counter_lbl
+   #_game_timer_lbl
+   +set_mine_counter()
+   +set_game_timer()
+   +set_button_face()
+}
+
+Frame <|-- FieldFrame
+Frame <|-- StatusFrame
+
+class Button
+
+class ButtonTile {
+   +UNCOVERED
+   +COVER_BLANK
+   +COVER_FLAG
+   +COVER_QUESTION
+   #_row
+   #_col
+   #_uncovered_image
+   #_blank_image
+   #_flag_image
+   #_question_image
+   +initialize_tile()
+   +place_in_gui()
+   +set_row_col()
+   +set_value()
+   +get_value()
+   +get_row_col()
+   +get_cover()
+   +print_contents()
+   +set_cover()
+   +uncover()
+}
+
+Button <|-- ButtonTile
+class Dialog
+
+class TopScores {
+   _parent
+   _latest_score
+   _score_file_io
+   _frame
+   +body()
+   +show_score()
+   +ask_winner_name()
+}
+
+Dialog <|-- TopScores
+
+class ScoreFileIO {
+   #_THE_SCORE_KEY
+   +SCORE_KEY
+   +NAME_KEY
+   +DATE_KEY
+   #_SCORE_DEFAULT
+   +MAX_SCORES
+   #_score_list
+   +make_default_score_list()
+   +read_in_scores()
+   +get_score_list()
+   +add_new_score()
+   +save_scores()
+   +is_leader()
+}
+
+MineFinder --> "1"  FieldFrame
+MineFinder --> "1"  StatusFrame
+FieldFrame "1" *-- "many" ButtonTile
+TopScores --> "1" ScoreFileIO
+FieldFrame --> "1" TopScores
+
+
+@enduml

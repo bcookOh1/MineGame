@@ -26,23 +26,28 @@ class ButtonTile(Button):
         self.config(bd=0, image=self._blank_image)
     # end initialize_tile
 
+
     def place_in_gui(self) -> None:
         self.grid(row=self._row, column=self._col)
     # end place_in_gui
 
-    def set_row_col(self, row=0, col=0) -> None:
+
+    def set_row_col(self, row: int=0, col: int=0) -> None:
         self._row = row
         self._col = col
     # end place_in_gui
+
 
     def set_value(self, val: int=0) -> None: self._value = val
     def get_value(self) -> int: return self._value
     def get_row_col(self) -> tuple[int, int]: return self._row, self._col
     def get_cover(self) -> int: return self._cover
 
+
     def print_contents(self) -> None:
         print("[%d,%d]" % (self._value, self._cover), end='')
     # end print_contents
+
 
     def set_cover(self) -> None:
 
@@ -59,6 +64,7 @@ class ButtonTile(Button):
            pass
 
     # end set_cover
+
 
     def uncover(self) -> None:
 

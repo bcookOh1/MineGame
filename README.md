@@ -1,6 +1,6 @@
 **Mine Finder Game**
 
-![](doc/the_game.png)
+![](docs/the_game.png)
 
 This game repoduces one that came with older versions of Microsoft Windows. The game is not completely fathful to the original, but is very playable. It's written in python and uses tkinter for the GUI. I wrote this as a way to learn some python and tkinker programming and apply best practices.
 
@@ -29,9 +29,13 @@ This game repoduces one that came with older versions of Microsoft Windows. The 
 
 **Code Description:**
 
+Class Diagram
+
+![](docs/class_diagram.png)
+
 Using right and left mouse clicks changes the state of a tile as follows.
 
-![](doc/tile_dot.png)
+![](docs/tile_dot.png)
 
 
 

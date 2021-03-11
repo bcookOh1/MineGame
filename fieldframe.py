@@ -8,7 +8,7 @@ class FieldFrame(Frame):
 
     # coords for adjacent tiles
     _ADJ = [(-1,0),(-1,1),(0,1),(1,1),(1,0),(1,-1),(0,-1),(-1,-1)]
-    _PERCENT_MINES = 5.0
+    _PERCENT_MINES = 15.0
     MINE_VALUE = 9
 
     def __init__(self, top, size: int=6):

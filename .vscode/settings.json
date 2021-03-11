@@ -1,5 +1,9 @@
 {
    "files.trimTrailingWhitespace": true,
    "python.linting.enabled": true,
-   "python.linting.pylintEnabled": true
+   "python.linting.pylintEnabled": true,
+   "plantuml.exportFormat": "png",
+   "plantuml.exportOutDir": "docs",
+   "plantuml.diagramsRoot": "docs"
+   ]
 }

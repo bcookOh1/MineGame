@@ -3,13 +3,13 @@ from tkinter import Tk
 from statusframe import StatusFrame
 from fieldframe import FieldFrame
 from buttontile import ButtonTile
-from topscores import TopScoresDlg
+from topscores import TopScores
 
 
 class MineFinder:
 
     MAX_TIME: int = 6000
-    LENGTH_OF_SIDE: int = 14
+    LENGTH_OF_SIDE: int = 15
 
     def __init__(self):
         self._size: int = MineFinder.LENGTH_OF_SIDE
@@ -201,7 +201,7 @@ class MineFinder:
         # use conditional to pass self._game_time
         # else MineGame.MAX_TIME as non-win
         time: int = self._game_time if test_for_win else MineFinder.MAX_TIME
-        TopScoresDlg(self._root, time)
+        TopScores(self._root, time)
 
     # end show_top_score_dialog
 

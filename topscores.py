@@ -2,7 +2,7 @@ from tkinter.simpledialog import Dialog, askstring
 from tkinter import Tk, Frame, Label, constants
 from scoreFileIO import ScoreFileIO
 
-class TopScoresDlg(Dialog):
+class TopScores(Dialog):
 
     def __init__(self, parent, latest):
 
@@ -16,7 +16,7 @@ class TopScoresDlg(Dialog):
     # end init
 
     # override from base dialog class
-    def body(self, parent):
+    def body(self, parent) -> None:
 
         self._score_file_io = ScoreFileIO('topscores.json')
         self._score_file_io.read_in_scores()
@@ -42,24 +42,27 @@ class TopScoresDlg(Dialog):
         # if latest score is a leader then ask for a name else just display
         # top scores
         if self._score_file_io.is_leader(self._latest_score) == True:
-            self._parent.after(100, self.get_leader_name)
+            self._parent.after(100, self.ask_winner_name)
         else:
-            self.show_scores(-1)
+            # a -2 for index will not highlight a score row
+            self.show_scores(-2)
+        # end if
 
     # end body
 
-    def apply(self):
-        return 'break'
-    # end apply
+    """
+        def apply(self):
+            return 'break'
+        # end apply
+    """
 
-
-    def show_scores(self, new_index: int):
+    def show_scores(self, new_index: int) -> None:
 
         score_list = self._score_file_io.get_score_list()
 
         for idx in range(len(score_list)):
 
-            # used for the grid row index which alrready contains text
+            # used for the grid row index which already contains text
             # and column headers
             row_index = idx + 2
 
@@ -68,6 +71,7 @@ class TopScoresDlg(Dialog):
                 row_color: str = "cyan1"
             else:
                 row_color: str = "light gray"
+            # end if
 
             # in each label use .configure() for additional items
             number_place_lbl = Label(self._frame, text=str(idx + 1) + ")", bg=row_color)
@@ -88,29 +92,28 @@ class TopScoresDlg(Dialog):
 
         else:
             self._frame.pack(side=constants.TOP)
+        # end for
 
     # end show_score
 
 
-    def get_leader_name(self) -> None:
+    def ask_winner_name(self) -> None:
 
         title_str: str = "New Top Score, " + str(self._latest_score)
         new_top_score_name = askstring(title_str, "Enter your name (15char max):", parent=self._parent)
 
+        # set default if user didn't enter a name in askstring()
         if new_top_score_name == None:
-           new_top_score_name = "mr. no-name"
+           new_top_score_name = "a winner"
         # end if
 
+        # the new_index row is highlighted in show_scores()
         new_index: int = self._score_file_io.add_new_score( self._latest_score, new_top_score_name)
         self._score_file_io.save_scores()
         self.show_scores(new_index)
 
-    # end get_leader_name
+    # end ask_winner_name
 
-    '''
-    def apply(self):
-    end apply
-    '''
 
 if __name__ == "__main__":
 
@@ -123,6 +126,6 @@ if __name__ == "__main__":
 
     root = Tk()
     latest_score: int = 250
-    s = TopScoresDlg(root, latest_score)
+    s = TopScores(root, latest_score)
     # print(s['highScore'])
     root.mainloop()
