@@ -35,7 +35,8 @@ class MineFinder:
         self.set_status_frame()
         self.set_field_frame()
 
-        self._field_frame.print_contents()
+        # self._field_frame.print_contents()
+
         self._root.mainloop()
     # end display_gui
 
@@ -181,7 +182,7 @@ class MineFinder:
             self._status_frame.set_game_timer(self._game_time)
 
             # if timeout of 10min then game lost
-            if self._game_time >= MineFinder.MAX_TIME:
+            if self._game_time >= MineFinder._MAX_TIME:
                 self._game_active = False
                 self._game_over = True
                 self._status_frame.set_button_face(StatusFrame.UH_HO_FACE)
@@ -201,7 +202,7 @@ class MineFinder:
 
         # use conditional to pass self._game_time
         # else MineGame.MAX_TIME as non-win
-        time: int = self._game_time if test_for_win else MineFinder.MAX_TIME
+        time: int = self._game_time if test_for_win else MineFinder._MAX_TIME
         TopScores(self._root, time)
 
     # end show_top_score_dialog
